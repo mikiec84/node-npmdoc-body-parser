@@ -11761,7 +11761,7 @@ return Utf8ArrayToStr(bff);
                 options.packageJson = JSON.parse(match1);
                 options.packageJson.description = options.dataFrom.split('\n')[1];
                 local.objectSetDefault(options.packageJson, {
-                    nameAlias: options.packageJson.name.replace((/-/g), '_'),
+                    nameAlias: options.packageJson.name.replace((/\W/g), '_'),
                     nameOriginal: options.packageJson.name
                 });
                 local.objectSetDefault(
@@ -14540,7 +14540,7 @@ instruction\n\
             ? {}
             : process.env;
         local.objectSetDefault(local.env, {
-            npm_package_nameAlias: (local.env.npm_package_name || '').replace((/-/g), '_')
+            npm_package_nameAlias: (local.env.npm_package_name || '').replace((/\W/g), '_')
         });
         local.objectSetDefault(local.env, {
             npm_package_description: 'example module',
