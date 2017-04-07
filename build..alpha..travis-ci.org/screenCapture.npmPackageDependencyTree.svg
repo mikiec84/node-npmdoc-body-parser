@@ -1,0 +1,28 @@
+<svg height="398" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="398" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">2 megabytes installed</tspan>
+<tspan x="10" y="42"></tspan>
+<tspan x="10" y="58">node_modules</tspan>
+<tspan x="10" y="74">└─┬ body-parser@1.17.1 </tspan>
+<tspan x="10" y="90">  ├── bytes@2.4.0 </tspan>
+<tspan x="10" y="106">  ├── content-type@1.0.2 </tspan>
+<tspan x="10" y="122">  ├─┬ debug@2.6.1 </tspan>
+<tspan x="10" y="138">  │ └── ms@0.7.2 </tspan>
+<tspan x="10" y="154">  ├── depd@1.1.0 </tspan>
+<tspan x="10" y="170">  ├─┬ http-errors@1.6.1 </tspan>
+<tspan x="10" y="186">  │ ├── inherits@2.0.3 </tspan>
+<tspan x="10" y="202">  │ ├── setprototypeof@1.0.3 </tspan>
+<tspan x="10" y="218">  │ └── statuses@1.3.1 </tspan>
+<tspan x="10" y="234">  ├── iconv-lite@0.4.15 </tspan>
+<tspan x="10" y="250">  ├─┬ on-finished@2.3.0 </tspan>
+<tspan x="10" y="266">  │ └── ee-first@1.1.1 </tspan>
+<tspan x="10" y="282">  ├── qs@6.4.0 </tspan>
+<tspan x="10" y="298">  ├─┬ raw-body@2.2.0 </tspan>
+<tspan x="10" y="314">  │ └── unpipe@1.0.0 </tspan>
+<tspan x="10" y="330">  └─┬ type-is@1.6.15 </tspan>
+<tspan x="10" y="346">    ├── media-typer@0.3.0 </tspan>
+<tspan x="10" y="362">    └─┬ mime-types@2.1.15 </tspan>
+<tspan x="10" y="378">      └── mime-db@1.27.0</tspan>
+</text>
+</svg>
