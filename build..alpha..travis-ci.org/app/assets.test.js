@@ -107,10 +107,6 @@
          * this function will test buildApidoc's default handling-behavior-behavior
          */
             options = { modulePathList: module.paths };
-            if (local.env.npm_package_buildNpmdoc) {
-                local.buildNpmdoc(options, onError);
-                return;
-            }
             local.buildApidoc(options, onError);
         };
 
@@ -146,10 +142,6 @@
         /*
          * this function will test buildReadme's default handling-behavior-behavior
          */
-            if (local.env.npm_package_buildNpmdoc) {
-                onError();
-                return;
-            }
             options = {};
             local.buildReadme(options, onError);
         };
