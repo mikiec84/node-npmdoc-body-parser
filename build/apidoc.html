@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.body-parser">
+            function <span class="apidocSignatureSpan"></span>body-parser
+            <span class="apidocSignatureSpan">(arg0)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.body-parser.json">
             function <span class="apidocSignatureSpan">body-parser.</span>json
             <span class="apidocSignatureSpan">(options)</span>
@@ -81,9 +90,27 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.read">
+            function <span class="apidocSignatureSpan">body-parser.</span>read
+            <span class="apidocSignatureSpan">(req, res, next, parse, debug, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.body-parser.text">
             function <span class="apidocSignatureSpan">body-parser.</span>text
             <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.toString">
+            function <span class="apidocSignatureSpan">body-parser.</span>toString
+            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -99,10 +126,105 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.json">module body-parser.json</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.json.json">
+            function <span class="apidocSignatureSpan">body-parser.</span>json
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.raw">module body-parser.raw</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.raw.raw">
+            function <span class="apidocSignatureSpan">body-parser.</span>raw
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.read">module body-parser.read</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.read.read">
+            function <span class="apidocSignatureSpan">body-parser.</span>read
+            <span class="apidocSignatureSpan">(req, res, next, parse, debug, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.text">module body-parser.text</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.text.text">
+            function <span class="apidocSignatureSpan">body-parser.</span>text
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.toString">module body-parser.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.toString.toString">
+            function <span class="apidocSignatureSpan">body-parser.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.body-parser.urlencoded">module body-parser.urlencoded</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.body-parser.urlencoded.urlencoded">
+            function <span class="apidocSignatureSpan">body-parser.</span>urlencoded
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.body-parser" id="apidoc.module.body-parser">module body-parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.body-parser" id="apidoc.element.body-parser.body-parser">
+        function <span class="apidocSignatureSpan"></span>body-parser
+        <span class="apidocSignatureSpan">(arg0)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">body-parser = function (arg0) {
+&#x22;use strict&#x22;
+log.call(deprecate, message, site)
+return fn.apply(this, arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -304,6 +426,112 @@ of the body.
 
 
     <h2>
+        <a href="#apidoc.element.body-parser.read" id="apidoc.element.body-parser.read">
+        function <span class="apidocSignatureSpan">body-parser.</span>read
+        <span class="apidocSignatureSpan">(req, res, next, parse, debug, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function read(req, res, next, parse, debug, options) {
+  var length
+  var opts = options
+  var stream
+
+  // flag as parsed
+  req._body = true
+
+  // read options
+  var encoding = opts.encoding !== null
+    ? opts.encoding
+    : null
+  var verify = opts.verify
+
+  try {
+    // get the content stream
+    stream = contentstream(req, debug, opts.inflate)
+    length = stream.length
+    stream.length = undefined
+  } catch (err) {
+    return next(err)
+  }
+
+  // set raw-body options
+  opts.length = length
+  opts.encoding = verify
+    ? null
+    : encoding
+
+  // assert charset is supported
+  if (opts.encoding === null &#x26;&#x26; encoding !== null &#x26;&#x26; !iconv.encodingExists(encoding)) {
+    return next(createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+      charset: encoding.toLowerCase()
+    }))
+  }
+
+  // read body
+  debug(&#x27;read body&#x27;)
+  getBody(stream, opts, function (err, body) {
+    if (err) {
+      // default to 400
+      setErrorStatus(err, 400)
+
+      // echo back charset
+      if (err.type === &#x27;encoding.unsupported&#x27;) {
+        err = createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+          charset: encoding.toLowerCase()
+        })
+      }
+
+      // read off entire request
+      stream.resume()
+      onFinished(req, function onfinished () {
+        next(err)
+      })
+      return
+    }
+
+    // verify
+    if (verify) {
+      try {
+        debug(&#x27;verify body&#x27;)
+        verify(req, res, body, encoding)
+      } catch (err) {
+        // default to 403
+        setErrorStatus(err, 403)
+        next(err)
+        return
+      }
+    }
+
+    // parse
+    var str
+    try {
+      debug(&#x27;parse body&#x27;)
+      str = typeof body !== &#x27;string&#x27; &#x26;&#x26; encoding !== null
+        ? iconv.decode(body, encoding)
+        : body
+      req.body = parse(str)
+    } catch (err) {
+      err.body = str === undefined
+        ? body
+        : str
+
+      // default to 400
+      setErrorStatus(err, 400)
+
+      next(err)
+      return
+    }
+
+    next()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.body-parser.text" id="apidoc.element.body-parser.text">
         function <span class="apidocSignatureSpan">body-parser.</span>text
         <span class="apidocSignatureSpan">(options)</span>
@@ -393,7 +621,567 @@ body.
 
 
     <h2>
+        <a href="#apidoc.element.body-parser.toString" id="apidoc.element.body-parser.toString">
+        function <span class="apidocSignatureSpan">body-parser.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.body-parser.urlencoded" id="apidoc.element.body-parser.urlencoded">
+        function <span class="apidocSignatureSpan">body-parser.</span>urlencoded
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function urlencoded(options) {
+  var opts = options || {}
+
+  // notice because option default will flip in next major
+  if (opts.extended === undefined) {
+    deprecate(&#x27;undefined extended: provide extended option&#x27;)
+  }
+
+  var extended = opts.extended !== false
+  var inflate = opts.inflate !== false
+  var limit = typeof opts.limit !== &#x27;number&#x27;
+    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+    : opts.limit
+  var type = opts.type || &#x27;application/x-www-form-urlencoded&#x27;
+  var verify = opts.verify || false
+
+  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
+    throw new TypeError(&#x27;option verify must be function&#x27;)
+  }
+
+  // create the appropriate query parser
+  var queryparse = extended
+    ? extendedparser(opts)
+    : simpleparser(opts)
+
+  // create the appropriate type checking function
+  var shouldParse = typeof type !== &#x27;function&#x27;
+    ? typeChecker(type)
+    : type
+
+  function parse (body) {
+    return body.length
+      ? queryparse(body)
+      : {}
+  }
+
+  return function urlencodedParser (req, res, next) {
+    if (req._body) {
+      debug(&#x27;body already parsed&#x27;)
+      next()
+      return
+    }
+
+    req.body = req.body || {}
+
+    // skip requests without bodies
+    if (!typeis.hasBody(req)) {
+      debug(&#x27;skip empty body&#x27;)
+      next()
+      return
+    }
+
+    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+
+    // determine if request should be parsed
+    if (!shouldParse(req)) {
+      debug(&#x27;skip parsing&#x27;)
+      next()
+      return
+    }
+
+    // assert charset
+    var charset = getCharset(req) || &#x27;utf-8&#x27;
+    if (charset !== &#x27;utf-8&#x27;) {
+      debug(&#x27;invalid charset&#x27;)
+      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+        charset: charset
+      }))
+      return
+    }
+
+    // read
+    read(req, res, next, parse, debug, {
+      debug: debug,
+      encoding: charset,
+      inflate: inflate,
+      limit: limit,
+      verify: verify
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+##### verify
+
+The `verify` option, if supplied, is called as `verify(req, res, buf, encoding)`,
+where `buf` is a `Buffer` of the raw request body and `encoding` is the
+encoding of the request. The parsing can be aborted by throwing an error.
+
+### bodyParser.<span class="apidocCodeKeywordSpan">urlencoded</span>(options)
+
+Returns middleware that only parses `urlencoded` bodies. This parser accepts
+only UTF-8 encoding of the body and supports automatic inflation of `gzip`
+and `deflate` encodings.
+
+A new `body` object containing the parsed data is populated on the `request`
+object after the middleware (i.e. `req.body`). This object will contain
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.json" id="apidoc.module.body-parser.json">module body-parser.json</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.json.json" id="apidoc.element.body-parser.json.json">
+        function <span class="apidocSignatureSpan">body-parser.</span>json
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function json(options) {
+  var opts = options || {}
+
+  var limit = typeof opts.limit !== &#x27;number&#x27;
+    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+    : opts.limit
+  var inflate = opts.inflate !== false
+  var reviver = opts.reviver
+  var strict = opts.strict !== false
+  var type = opts.type || &#x27;application/json&#x27;
+  var verify = opts.verify || false
+
+  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
+    throw new TypeError(&#x27;option verify must be function&#x27;)
+  }
+
+  // create the appropriate type checking function
+  var shouldParse = typeof type !== &#x27;function&#x27;
+    ? typeChecker(type)
+    : type
+
+  function parse (body) {
+    if (body.length === 0) {
+      // special-case empty json body, as it&#x27;s a common client-side mistake
+      // TODO: maybe make this configurable or part of &#x22;strict&#x22; option
+      return {}
+    }
+
+    if (strict) {
+      var first = firstchar(body)
+
+      if (first !== &#x27;{&#x27; &#x26;&#x26; first !== &#x27;[&#x27;) {
+        debug(&#x27;strict violation&#x27;)
+        throw new SyntaxError(&#x27;Unexpected token &#x27; + first)
+      }
+    }
+
+    debug(&#x27;parse json&#x27;)
+    return JSON.parse(body, reviver)
+  }
+
+  return function jsonParser (req, res, next) {
+    if (req._body) {
+      debug(&#x27;body already parsed&#x27;)
+      next()
+      return
+    }
+
+    req.body = req.body || {}
+
+    // skip requests without bodies
+    if (!typeis.hasBody(req)) {
+      debug(&#x27;skip empty body&#x27;)
+      next()
+      return
+    }
+
+    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+
+    // determine if request should be parsed
+    if (!shouldParse(req)) {
+      debug(&#x27;skip parsing&#x27;)
+      next()
+      return
+    }
+
+    // assert charset per RFC 7159 sec 8.1
+    var charset = getCharset(req) || &#x27;utf-8&#x27;
+    if (charset.substr(0, 4) !== &#x27;utf-&#x27;) {
+      debug(&#x27;invalid charset&#x27;)
+      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+        charset: charset
+      }))
+      return
+    }
+
+    // read
+    read(req, res, next, parse, debug, {
+      encoding: charset,
+      inflate: inflate,
+      limit: limit,
+      verify: verify
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+The `bodyParser` object exposes various factories to create middlewares. All
+middlewares will populate the `req.body` property with the parsed body, or an
+empty object (`{}`) if there was no body to parse (or an error was returned).
+
+The various errors returned by this module are described in the
+[errors section](#errors).
+
+### bodyParser.<span class="apidocCodeKeywordSpan">json</span>(options)
+
+Returns middleware that only parses `json`. This parser accepts any Unicode
+encoding of the body and supports automatic inflation of `gzip` and `deflate`
+encodings.
+
+A new `body` object containing the parsed data is populated on the `request`
+object after the middleware (i.e. `req.body`).
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.raw" id="apidoc.module.body-parser.raw">module body-parser.raw</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.raw.raw" id="apidoc.element.body-parser.raw.raw">
+        function <span class="apidocSignatureSpan">body-parser.</span>raw
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function raw(options) {
+  var opts = options || {}
+
+  var inflate = opts.inflate !== false
+  var limit = typeof opts.limit !== &#x27;number&#x27;
+    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+    : opts.limit
+  var type = opts.type || &#x27;application/octet-stream&#x27;
+  var verify = opts.verify || false
+
+  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
+    throw new TypeError(&#x27;option verify must be function&#x27;)
+  }
+
+  // create the appropriate type checking function
+  var shouldParse = typeof type !== &#x27;function&#x27;
+    ? typeChecker(type)
+    : type
+
+  function parse (buf) {
+    return buf
+  }
+
+  return function rawParser (req, res, next) {
+    if (req._body) {
+      debug(&#x27;body already parsed&#x27;)
+      next()
+      return
+    }
+
+    req.body = req.body || {}
+
+    // skip requests without bodies
+    if (!typeis.hasBody(req)) {
+      debug(&#x27;skip empty body&#x27;)
+      next()
+      return
+    }
+
+    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+
+    // determine if request should be parsed
+    if (!shouldParse(req)) {
+      debug(&#x27;skip parsing&#x27;)
+      next()
+      return
+    }
+
+    // read
+    read(req, res, next, parse, debug, {
+      encoding: null,
+      inflate: inflate,
+      limit: limit,
+      verify: verify
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+##### verify
+
+The `verify` option, if supplied, is called as `verify(req, res, buf, encoding)`,
+where `buf` is a `Buffer` of the raw request body and `encoding` is the
+encoding of the request. The parsing can be aborted by throwing an error.
+
+### bodyParser.<span class="apidocCodeKeywordSpan">raw</span>(options)
+
+Returns middleware that parses all bodies as a `Buffer`. This parser
+supports automatic inflation of `gzip` and `deflate` encodings.
+
+A new `body` object containing the parsed data is populated on the `request`
+object after the middleware (i.e. `req.body`). This will be a `Buffer` object
+of the body.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.read" id="apidoc.module.body-parser.read">module body-parser.read</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.read.read" id="apidoc.element.body-parser.read.read">
+        function <span class="apidocSignatureSpan">body-parser.</span>read
+        <span class="apidocSignatureSpan">(req, res, next, parse, debug, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function read(req, res, next, parse, debug, options) {
+  var length
+  var opts = options
+  var stream
+
+  // flag as parsed
+  req._body = true
+
+  // read options
+  var encoding = opts.encoding !== null
+    ? opts.encoding
+    : null
+  var verify = opts.verify
+
+  try {
+    // get the content stream
+    stream = contentstream(req, debug, opts.inflate)
+    length = stream.length
+    stream.length = undefined
+  } catch (err) {
+    return next(err)
+  }
+
+  // set raw-body options
+  opts.length = length
+  opts.encoding = verify
+    ? null
+    : encoding
+
+  // assert charset is supported
+  if (opts.encoding === null &#x26;&#x26; encoding !== null &#x26;&#x26; !iconv.encodingExists(encoding)) {
+    return next(createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+      charset: encoding.toLowerCase()
+    }))
+  }
+
+  // read body
+  debug(&#x27;read body&#x27;)
+  getBody(stream, opts, function (err, body) {
+    if (err) {
+      // default to 400
+      setErrorStatus(err, 400)
+
+      // echo back charset
+      if (err.type === &#x27;encoding.unsupported&#x27;) {
+        err = createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+          charset: encoding.toLowerCase()
+        })
+      }
+
+      // read off entire request
+      stream.resume()
+      onFinished(req, function onfinished () {
+        next(err)
+      })
+      return
+    }
+
+    // verify
+    if (verify) {
+      try {
+        debug(&#x27;verify body&#x27;)
+        verify(req, res, body, encoding)
+      } catch (err) {
+        // default to 403
+        setErrorStatus(err, 403)
+        next(err)
+        return
+      }
+    }
+
+    // parse
+    var str
+    try {
+      debug(&#x27;parse body&#x27;)
+      str = typeof body !== &#x27;string&#x27; &#x26;&#x26; encoding !== null
+        ? iconv.decode(body, encoding)
+        : body
+      req.body = parse(str)
+    } catch (err) {
+      err.body = str === undefined
+        ? body
+        : str
+
+      // default to 400
+      setErrorStatus(err, 400)
+
+      next(err)
+      return
+    }
+
+    next()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.text" id="apidoc.module.body-parser.text">module body-parser.text</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.text.text" id="apidoc.element.body-parser.text.text">
+        function <span class="apidocSignatureSpan">body-parser.</span>text
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function text(options) {
+  var opts = options || {}
+
+  var defaultCharset = opts.defaultCharset || &#x27;utf-8&#x27;
+  var inflate = opts.inflate !== false
+  var limit = typeof opts.limit !== &#x27;number&#x27;
+    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+    : opts.limit
+  var type = opts.type || &#x27;text/plain&#x27;
+  var verify = opts.verify || false
+
+  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
+    throw new TypeError(&#x27;option verify must be function&#x27;)
+  }
+
+  // create the appropriate type checking function
+  var shouldParse = typeof type !== &#x27;function&#x27;
+    ? typeChecker(type)
+    : type
+
+  function parse (buf) {
+    return buf
+  }
+
+  return function textParser (req, res, next) {
+    if (req._body) {
+      debug(&#x27;body already parsed&#x27;)
+      next()
+      return
+    }
+
+    req.body = req.body || {}
+
+    // skip requests without bodies
+    if (!typeis.hasBody(req)) {
+      debug(&#x27;skip empty body&#x27;)
+      next()
+      return
+    }
+
+    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+
+    // determine if request should be parsed
+    if (!shouldParse(req)) {
+      debug(&#x27;skip parsing&#x27;)
+      next()
+      return
+    }
+
+    // get charset
+    var charset = getCharset(req) || defaultCharset
+
+    // read
+    read(req, res, next, parse, debug, {
+      encoding: charset,
+      inflate: inflate,
+      limit: limit,
+      verify: verify
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+##### verify
+
+The `verify` option, if supplied, is called as `verify(req, res, buf, encoding)`,
+where `buf` is a `Buffer` of the raw request body and `encoding` is the
+encoding of the request. The parsing can be aborted by throwing an error.
+
+### bodyParser.<span class="apidocCodeKeywordSpan">text</span>(options)
+
+Returns middleware that parses all bodies as a string. This parser supports
+automatic inflation of `gzip` and `deflate` encodings.
+
+A new `body` string containing the parsed data is populated on the `request`
+object after the middleware (i.e. `req.body`). This will be a string of the
+body.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.toString" id="apidoc.module.body-parser.toString">module body-parser.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.toString.toString" id="apidoc.element.body-parser.toString.toString">
+        function <span class="apidocSignatureSpan">body-parser.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.body-parser.urlencoded" id="apidoc.module.body-parser.urlencoded">module body-parser.urlencoded</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.body-parser.urlencoded.urlencoded" id="apidoc.element.body-parser.urlencoded.urlencoded">
         function <span class="apidocSignatureSpan">body-parser.</span>urlencoded
         <span class="apidocSignatureSpan">(options)</span>
         </a>

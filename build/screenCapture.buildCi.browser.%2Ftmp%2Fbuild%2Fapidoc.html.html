@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/expressjs/body-parser#readme"
-
-    >body-parser (v1.17.1)</a>
+    <a href="https://github.com/expressjs/body-parser#readme">body-parser (v1.17.1)</a>
 </h1>
 <h4>Node.js body parsing middleware</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.body-parser">module body-parser</a><ol>
 
@@ -218,7 +211,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">body-parser = function (arg0) {
-&#x22;use strict&#x22;
+"use strict"
 log.call(deprecate, message, site)
 return fn.apply(this, arguments)
 }</pre></li>
@@ -237,47 +230,47 @@ return fn.apply(this, arguments)
     <li>description and source-code<pre class="apidocCodePre">function json(options) {
   var opts = options || {}
 
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
   var inflate = opts.inflate !== false
   var reviver = opts.reviver
   var strict = opts.strict !== false
-  var type = opts.type || &#x27;application/json&#x27;
+  var type = opts.type || 'application/json'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
   function parse (body) {
     if (body.length === 0) {
-      // special-case empty json body, as it&#x27;s a common client-side mistake
-      // TODO: maybe make this configurable or part of &#x22;strict&#x22; option
+      // special-case empty json body, as it's a common client-side mistake
+      // TODO: maybe make this configurable or part of "strict" option
       return {}
     }
 
     if (strict) {
       var first = firstchar(body)
 
-      if (first !== &#x27;{&#x27; &#x26;&#x26; first !== &#x27;[&#x27;) {
-        debug(&#x27;strict violation&#x27;)
-        throw new SyntaxError(&#x27;Unexpected token &#x27; + first)
+      if (first !== '{' &amp;&amp; first !== '[') {
+        debug('strict violation')
+        throw new SyntaxError('Unexpected token ' + first)
       }
     }
 
-    debug(&#x27;parse json&#x27;)
+    debug('parse json')
     return JSON.parse(body, reviver)
   }
 
   return function jsonParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -286,25 +279,25 @@ return fn.apply(this, arguments)
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
 
     // assert charset per RFC 7159 sec 8.1
-    var charset = getCharset(req) || &#x27;utf-8&#x27;
-    if (charset.substr(0, 4) !== &#x27;utf-&#x27;) {
-      debug(&#x27;invalid charset&#x27;)
-      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+    var charset = getCharset(req) || 'utf-8'
+    if (charset.substr(0, 4) !== 'utf-') {
+      debug('invalid charset')
+      next(createError(415, 'unsupported charset "' + charset.toUpperCase() + '"', {
         charset: charset
       }))
       return
@@ -351,18 +344,18 @@ object after the middleware (i.e. `req.body`).
   var opts = options || {}
 
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;application/octet-stream&#x27;
+  var type = opts.type || 'application/octet-stream'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -372,7 +365,7 @@ object after the middleware (i.e. `req.body`).
 
   return function rawParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -381,16 +374,16 @@ object after the middleware (i.e. `req.body`).
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
@@ -462,22 +455,22 @@ of the body.
     : encoding
 
   // assert charset is supported
-  if (opts.encoding === null &#x26;&#x26; encoding !== null &#x26;&#x26; !iconv.encodingExists(encoding)) {
-    return next(createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+  if (opts.encoding === null &amp;&amp; encoding !== null &amp;&amp; !iconv.encodingExists(encoding)) {
+    return next(createError(415, 'unsupported charset "' + encoding.toUpperCase() + '"', {
       charset: encoding.toLowerCase()
     }))
   }
 
   // read body
-  debug(&#x27;read body&#x27;)
+  debug('read body')
   getBody(stream, opts, function (err, body) {
     if (err) {
       // default to 400
       setErrorStatus(err, 400)
 
       // echo back charset
-      if (err.type === &#x27;encoding.unsupported&#x27;) {
-        err = createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+      if (err.type === 'encoding.unsupported') {
+        err = createError(415, 'unsupported charset "' + encoding.toUpperCase() + '"', {
           charset: encoding.toLowerCase()
         })
       }
@@ -493,7 +486,7 @@ of the body.
     // verify
     if (verify) {
       try {
-        debug(&#x27;verify body&#x27;)
+        debug('verify body')
         verify(req, res, body, encoding)
       } catch (err) {
         // default to 403
@@ -506,8 +499,8 @@ of the body.
     // parse
     var str
     try {
-      debug(&#x27;parse body&#x27;)
-      str = typeof body !== &#x27;string&#x27; &#x26;&#x26; encoding !== null
+      debug('parse body')
+      str = typeof body !== 'string' &amp;&amp; encoding !== null
         ? iconv.decode(body, encoding)
         : body
       req.body = parse(str)
@@ -541,20 +534,20 @@ of the body.
     <li>description and source-code<pre class="apidocCodePre">function text(options) {
   var opts = options || {}
 
-  var defaultCharset = opts.defaultCharset || &#x27;utf-8&#x27;
+  var defaultCharset = opts.defaultCharset || 'utf-8'
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;text/plain&#x27;
+  var type = opts.type || 'text/plain'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -564,7 +557,7 @@ of the body.
 
   return function textParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -573,16 +566,16 @@ of the body.
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
@@ -647,19 +640,19 @@ body.
 
   // notice because option default will flip in next major
   if (opts.extended === undefined) {
-    deprecate(&#x27;undefined extended: provide extended option&#x27;)
+    deprecate('undefined extended: provide extended option')
   }
 
   var extended = opts.extended !== false
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;application/x-www-form-urlencoded&#x27;
+  var type = opts.type || 'application/x-www-form-urlencoded'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate query parser
@@ -668,7 +661,7 @@ body.
     : simpleparser(opts)
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -680,7 +673,7 @@ body.
 
   return function urlencodedParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -689,25 +682,25 @@ body.
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
 
     // assert charset
-    var charset = getCharset(req) || &#x27;utf-8&#x27;
-    if (charset !== &#x27;utf-8&#x27;) {
-      debug(&#x27;invalid charset&#x27;)
-      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+    var charset = getCharset(req) || 'utf-8'
+    if (charset !== 'utf-8') {
+      debug('invalid charset')
+      next(createError(415, 'unsupported charset "' + charset.toUpperCase() + '"', {
         charset: charset
       }))
       return
@@ -759,47 +752,47 @@ object after the middleware (i.e. `req.body`). This object will contain
     <li>description and source-code<pre class="apidocCodePre">function json(options) {
   var opts = options || {}
 
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
   var inflate = opts.inflate !== false
   var reviver = opts.reviver
   var strict = opts.strict !== false
-  var type = opts.type || &#x27;application/json&#x27;
+  var type = opts.type || 'application/json'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
   function parse (body) {
     if (body.length === 0) {
-      // special-case empty json body, as it&#x27;s a common client-side mistake
-      // TODO: maybe make this configurable or part of &#x22;strict&#x22; option
+      // special-case empty json body, as it's a common client-side mistake
+      // TODO: maybe make this configurable or part of "strict" option
       return {}
     }
 
     if (strict) {
       var first = firstchar(body)
 
-      if (first !== &#x27;{&#x27; &#x26;&#x26; first !== &#x27;[&#x27;) {
-        debug(&#x27;strict violation&#x27;)
-        throw new SyntaxError(&#x27;Unexpected token &#x27; + first)
+      if (first !== '{' &amp;&amp; first !== '[') {
+        debug('strict violation')
+        throw new SyntaxError('Unexpected token ' + first)
       }
     }
 
-    debug(&#x27;parse json&#x27;)
+    debug('parse json')
     return JSON.parse(body, reviver)
   }
 
   return function jsonParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -808,25 +801,25 @@ object after the middleware (i.e. `req.body`). This object will contain
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
 
     // assert charset per RFC 7159 sec 8.1
-    var charset = getCharset(req) || &#x27;utf-8&#x27;
-    if (charset.substr(0, 4) !== &#x27;utf-&#x27;) {
-      debug(&#x27;invalid charset&#x27;)
-      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+    var charset = getCharset(req) || 'utf-8'
+    if (charset.substr(0, 4) !== 'utf-') {
+      debug('invalid charset')
+      next(createError(415, 'unsupported charset "' + charset.toUpperCase() + '"', {
         charset: charset
       }))
       return
@@ -878,18 +871,18 @@ object after the middleware (i.e. `req.body`).
   var opts = options || {}
 
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;application/octet-stream&#x27;
+  var type = opts.type || 'application/octet-stream'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -899,7 +892,7 @@ object after the middleware (i.e. `req.body`).
 
   return function rawParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -908,16 +901,16 @@ object after the middleware (i.e. `req.body`).
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
@@ -994,22 +987,22 @@ of the body.
     : encoding
 
   // assert charset is supported
-  if (opts.encoding === null &#x26;&#x26; encoding !== null &#x26;&#x26; !iconv.encodingExists(encoding)) {
-    return next(createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+  if (opts.encoding === null &amp;&amp; encoding !== null &amp;&amp; !iconv.encodingExists(encoding)) {
+    return next(createError(415, 'unsupported charset "' + encoding.toUpperCase() + '"', {
       charset: encoding.toLowerCase()
     }))
   }
 
   // read body
-  debug(&#x27;read body&#x27;)
+  debug('read body')
   getBody(stream, opts, function (err, body) {
     if (err) {
       // default to 400
       setErrorStatus(err, 400)
 
       // echo back charset
-      if (err.type === &#x27;encoding.unsupported&#x27;) {
-        err = createError(415, &#x27;unsupported charset &#x22;&#x27; + encoding.toUpperCase() + &#x27;&#x22;&#x27;, {
+      if (err.type === 'encoding.unsupported') {
+        err = createError(415, 'unsupported charset "' + encoding.toUpperCase() + '"', {
           charset: encoding.toLowerCase()
         })
       }
@@ -1025,7 +1018,7 @@ of the body.
     // verify
     if (verify) {
       try {
-        debug(&#x27;verify body&#x27;)
+        debug('verify body')
         verify(req, res, body, encoding)
       } catch (err) {
         // default to 403
@@ -1038,8 +1031,8 @@ of the body.
     // parse
     var str
     try {
-      debug(&#x27;parse body&#x27;)
-      str = typeof body !== &#x27;string&#x27; &#x26;&#x26; encoding !== null
+      debug('parse body')
+      str = typeof body !== 'string' &amp;&amp; encoding !== null
         ? iconv.decode(body, encoding)
         : body
       req.body = parse(str)
@@ -1078,20 +1071,20 @@ of the body.
     <li>description and source-code<pre class="apidocCodePre">function text(options) {
   var opts = options || {}
 
-  var defaultCharset = opts.defaultCharset || &#x27;utf-8&#x27;
+  var defaultCharset = opts.defaultCharset || 'utf-8'
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;text/plain&#x27;
+  var type = opts.type || 'text/plain'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -1101,7 +1094,7 @@ of the body.
 
   return function textParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -1110,16 +1103,16 @@ of the body.
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
@@ -1192,19 +1185,19 @@ body.
 
   // notice because option default will flip in next major
   if (opts.extended === undefined) {
-    deprecate(&#x27;undefined extended: provide extended option&#x27;)
+    deprecate('undefined extended: provide extended option')
   }
 
   var extended = opts.extended !== false
   var inflate = opts.inflate !== false
-  var limit = typeof opts.limit !== &#x27;number&#x27;
-    ? bytes.parse(opts.limit || &#x27;100kb&#x27;)
+  var limit = typeof opts.limit !== 'number'
+    ? bytes.parse(opts.limit || '100kb')
     : opts.limit
-  var type = opts.type || &#x27;application/x-www-form-urlencoded&#x27;
+  var type = opts.type || 'application/x-www-form-urlencoded'
   var verify = opts.verify || false
 
-  if (verify !== false &#x26;&#x26; typeof verify !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;option verify must be function&#x27;)
+  if (verify !== false &amp;&amp; typeof verify !== 'function') {
+    throw new TypeError('option verify must be function')
   }
 
   // create the appropriate query parser
@@ -1213,7 +1206,7 @@ body.
     : simpleparser(opts)
 
   // create the appropriate type checking function
-  var shouldParse = typeof type !== &#x27;function&#x27;
+  var shouldParse = typeof type !== 'function'
     ? typeChecker(type)
     : type
 
@@ -1225,7 +1218,7 @@ body.
 
   return function urlencodedParser (req, res, next) {
     if (req._body) {
-      debug(&#x27;body already parsed&#x27;)
+      debug('body already parsed')
       next()
       return
     }
@@ -1234,25 +1227,25 @@ body.
 
     // skip requests without bodies
     if (!typeis.hasBody(req)) {
-      debug(&#x27;skip empty body&#x27;)
+      debug('skip empty body')
       next()
       return
     }
 
-    debug(&#x27;content-type %j&#x27;, req.headers[&#x27;content-type&#x27;])
+    debug('content-type %j', req.headers['content-type'])
 
     // determine if request should be parsed
     if (!shouldParse(req)) {
-      debug(&#x27;skip parsing&#x27;)
+      debug('skip parsing')
       next()
       return
     }
 
     // assert charset
-    var charset = getCharset(req) || &#x27;utf-8&#x27;
-    if (charset !== &#x27;utf-8&#x27;) {
-      debug(&#x27;invalid charset&#x27;)
-      next(createError(415, &#x27;unsupported charset &#x22;&#x27; + charset.toUpperCase() + &#x27;&#x22;&#x27;, {
+    var charset = getCharset(req) || 'utf-8'
+    if (charset !== 'utf-8') {
+      debug('invalid charset')
+      next(createError(415, 'unsupported charset "' + charset.toUpperCase() + '"', {
         charset: charset
       }))
       return
@@ -1296,3 +1289,4 @@ object after the middleware (i.e. `req.body`). This object will contain
     ]
 </div>
 </div>
+</body></html>

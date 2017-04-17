@@ -115,7 +115,7 @@ instruction
                     /*jslint evil: true*/
                     eval(document.querySelector('#inputTextareaEval1').value);
                 } catch (errorCaught) {
-                    console.error(errorCaught.stack);
+                    console.error(errorCaught);
                 }
             }
         };
