@@ -1,1 +1,39 @@
-{     "devDependencies": {         "body-parser": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmdoc-body-parser",     "homepage": "https://github.com/npmdoc/node-npmdoc-body-parser",     "repository": {         "type": "git",         "url": "https://github.com/npmdoc/node-npmdoc-body-parser.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "#### api documentation for  [body-parser (v1.17.1)](https://github.com/expressjs/body-parser#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-body-parser.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-body-parser) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-body-parser.svg)](https://travis-ci.org/npmdoc/node-npmdoc-body-parser)",
+    "devDependencies": {
+        "body-parser": "*",
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-body-parser",
+    "keywords": [
+        "documentation",
+        "body-parser"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_body_parser.js",
+    "name": "npmdoc-body-parser",
+    "nameAlias": "npmdoc_body_parser",
+    "nameOriginal": "npmdoc-body-parser",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-body-parser.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.8"
+}
